@@ -4,7 +4,7 @@
     <Version>0.1.0</Version>
     <Description>Makes the dungeon release hold-button effectively instant.</Description>
     <Authors>Aesais</Authors>
-    <RepositoryUrl>https://github.com/OWNER/fast-release</RepositoryUrl>
+    <RepositoryUrl>https://github.com/ashandarei/fast-release</RepositoryUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Nullable>enable</Nullable>
     <IsPackable>false</IsPackable>

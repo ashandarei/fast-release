@@ -7,7 +7,7 @@
     "InternalName": "FastRelease",
     "AssemblyVersion": "0.1.0.0",
     "TestingAssemblyVersion": "0.1.0.0",
-    "RepoUrl": "https://github.com/OWNER/fast-release",
+    "RepoUrl": "https://github.com/ashandarei/fast-release",
     "ApplicableVersion": "any",
     "DalamudApiLevel": 14,
     "TestingDalamudApiLevel": 14,
@@ -20,9 +20,8 @@
     "IsTestingExclusive": "False",
     "DownloadCount": 0,
     "LastUpdate": 0,
-    "DownloadLinkInstall": "https://github.com/OWNER/fast-release/releases/download/v0.1.0/latest.zip",
-    "DownloadLinkUpdate": "https://github.com/OWNER/fast-release/releases/download/v0.1.0/latest.zip",
-    "DownloadLinkTesting": "https://github.com/OWNER/fast-release/releases/download/v0.1.0/latest.zip"
+    "DownloadLinkInstall": "https://github.com/ashandarei/fast-release/releases/download/v0.1.0/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/ashandarei/fast-release/releases/download/v0.1.0/latest.zip",
+    "DownloadLinkTesting": "https://github.com/ashandarei/fast-release/releases/download/v0.1.0/latest.zip"
   }
 ]
-

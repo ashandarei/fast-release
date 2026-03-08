@@ -13,9 +13,9 @@ This plugin only changes the `SelectYesno` popup while the `Revive` agent is act
 
 ## Third-party repo
 
-Once this repository is published to GitHub and a tagged release exists, users can add this custom repo URL in Dalamud:
+Users can add this custom repo URL in Dalamud:
 
-`https://raw.githubusercontent.com/<github-user>/<repo-name>/main/repo.json`
+`https://raw.githubusercontent.com/ashandarei/fast-release/main/repo.json`
 
 ## Release flow
 
