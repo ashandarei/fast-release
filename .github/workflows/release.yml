@@ -82,7 +82,7 @@ jobs:
           $json[0].DownloadLinkInstall = $downloadUrl
           $json[0].DownloadLinkUpdate = $downloadUrl
           $json[0].DownloadLinkTesting = $downloadUrl
-          $json | ConvertTo-Json -Depth 8 | Set-Content -Encoding utf8 $path
+          $json | ConvertTo-Json -Depth 8 -AsArray | Set-Content -Encoding utf8 $path
 
       - name: Commit repo.json
         shell: pwsh

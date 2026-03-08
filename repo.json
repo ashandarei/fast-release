@@ -1,25 +1,27 @@
-{
-  "Author": "Aesais",
-  "Name": "Fast Release",
-  "Punchline": "Makes the dungeon release hold-button effectively instant.",
-  "Description": "Shrinks the revive/release hold duration on the SelectYesno popup while the Revive agent is active.",
-  "InternalName": "FastRelease",
-  "AssemblyVersion": "0.1.0.0",
-  "TestingAssemblyVersion": "0.1.0.0",
-  "RepoUrl": "https://github.com/ashandarei/fast-release",
-  "ApplicableVersion": "any",
-  "DalamudApiLevel": 14,
-  "TestingDalamudApiLevel": 14,
-  "Tags": [
-    "ui",
-    "revive",
-    "release"
-  ],
-  "IsHide": "False",
-  "IsTestingExclusive": "False",
-  "DownloadCount": 0,
-  "LastUpdate": 1772954370,
-  "DownloadLinkInstall": "https://github.com/ashandarei/fast-release/releases/download/v0.1.0/latest.zip",
-  "DownloadLinkUpdate": "https://github.com/ashandarei/fast-release/releases/download/v0.1.0/latest.zip",
-  "DownloadLinkTesting": "https://github.com/ashandarei/fast-release/releases/download/v0.1.0/latest.zip"
-}
+[
+  {
+    "Author": "Aesais",
+    "Name": "Fast Release",
+    "Punchline": "Makes the dungeon release hold-button effectively instant.",
+    "Description": "Shrinks the revive/release hold duration on the SelectYesno popup while the Revive agent is active.",
+    "InternalName": "FastRelease",
+    "AssemblyVersion": "0.1.0.0",
+    "TestingAssemblyVersion": "0.1.0.0",
+    "RepoUrl": "https://github.com/ashandarei/fast-release",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": 14,
+    "TestingDalamudApiLevel": 14,
+    "Tags": [
+      "ui",
+      "revive",
+      "release"
+    ],
+    "IsHide": "False",
+    "IsTestingExclusive": "False",
+    "DownloadCount": 0,
+    "LastUpdate": 1772954370,
+    "DownloadLinkInstall": "https://github.com/ashandarei/fast-release/releases/download/v0.1.0/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/ashandarei/fast-release/releases/download/v0.1.0/latest.zip",
+    "DownloadLinkTesting": "https://github.com/ashandarei/fast-release/releases/download/v0.1.0/latest.zip"
+  }
+]
