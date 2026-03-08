@@ -1,0 +1,97 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Download Dalamud
+        shell: pwsh
+        run: |
+          $target = Join-Path $env:APPDATA 'XIVLauncher\addon\Hooks\dev'
+          New-Item -ItemType Directory -Force -Path $target | Out-Null
+          Invoke-WebRequest -Uri 'https://goatcorp.github.io/dalamud-distrib/stg/latest.zip' -OutFile latest.zip
+          Expand-Archive -Force latest.zip $target
+
+      - name: Compute version info
+        id: version
+        shell: pwsh
+        run: |
+          $tag = '${{ github.ref_name }}'
+          $version = $tag.TrimStart('v')
+          if ($version -match '^\d+\.\d+\.\d+$') {
+            $assemblyVersion = "$version.0"
+          } else {
+            $assemblyVersion = $version
+          }
+          "tag=$tag" >> $env:GITHUB_OUTPUT
+          "version=$version" >> $env:GITHUB_OUTPUT
+          "assembly_version=$assemblyVersion" >> $env:GITHUB_OUTPUT
+
+      - name: Restore
+        run: dotnet restore FastRelease\FastRelease.csproj
+
+      - name: Build
+        run: >
+          dotnet build FastRelease\FastRelease.csproj
+          -c Release
+          --no-restore
+          -p:Version=${{ steps.version.outputs.version }}
+          -p:AssemblyVersion=${{ steps.version.outputs.assembly_version }}
+          -p:FileVersion=${{ steps.version.outputs.assembly_version }}
+
+      - name: Create GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          files: FastRelease/bin/Release/FastRelease/latest.zip
+
+      - name: Update repo.json
+        shell: pwsh
+        run: |
+          $repoUrl = "https://github.com/${{ github.repository }}"
+          $downloadUrl = "$repoUrl/releases/download/${{ steps.version.outputs.tag }}/latest.zip"
+          $lastUpdate = [DateTimeOffset]::UtcNow.ToUnixTimeSeconds()
+
+          $path = 'repo.json'
+          $json = Get-Content -Raw $path | ConvertFrom-Json
+          $json[0].AssemblyVersion = '${{ steps.version.outputs.assembly_version }}'
+          $json[0].TestingAssemblyVersion = '${{ steps.version.outputs.assembly_version }}'
+          $json[0].RepoUrl = $repoUrl
+          $json[0].DalamudApiLevel = 14
+          $json[0].TestingDalamudApiLevel = 14
+          $json[0].LastUpdate = $lastUpdate
+          $json[0].DownloadLinkInstall = $downloadUrl
+          $json[0].DownloadLinkUpdate = $downloadUrl
+          $json[0].DownloadLinkTesting = $downloadUrl
+          $json | ConvertTo-Json -Depth 8 | Set-Content -Encoding utf8 $path
+
+      - name: Commit repo.json
+        shell: pwsh
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git checkout ${{ github.event.repository.default_branch }}
+          git add repo.json
+          git commit -m "Update repo.json for ${{ github.ref_name }}" 2>$null
+          if ($LASTEXITCODE -eq 0) {
+            git push
+          }

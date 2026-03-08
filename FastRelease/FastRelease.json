@@ -1,0 +1,8 @@
+{
+  "Author": "Aesais",
+  "Name": "Fast Release",
+  "Punchline": "Makes the dungeon release hold-button effectively instant.",
+  "Description": "Shrinks the revive/release hold duration on the SelectYesno popup while the Revive agent is active.",
+  "ApplicableVersion": "any",
+  "Tags": ["ui", "revive", "release"]
+}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Dalamud.NET.Sdk/14.0.2">
+  <PropertyGroup>
+    <Version>0.1.0</Version>
+    <Description>Makes the dungeon release hold-button effectively instant.</Description>
+    <Authors>Aesais</Authors>
+    <RepositoryUrl>https://github.com/OWNER/fast-release</RepositoryUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+</Project>
